@@ -1,5 +1,10 @@
 {
-  "devDependencies": {
-    "@graphprotocol/graph-cli": "^0.97.1"
-  }
+ "scripts": {
+  "build:schema": "tsx scripts/build-schema.ts",
+  "build:graph": "npm run build:schema && cd svsn && graph codegen && graph build"
+ },
+ "devDependencies": {
+  "@graphprotocol/graph-cli": "^0.97.1",
+  "tsx": "^4.20.3"
+ }
 }

@@ -1,0 +1,10 @@
+type YieldSnapshot @entity(immutable: true) {
+  id: ID!
+  blockNumber: BigInt!
+  txHash: Bytes!
+  timestamp: BigInt!
+  eventType: String! # "deposit", "withdraw", "distributeRewards", "cooldownStarted"
+  totalAssets: BigInt!
+  totalSupply: BigInt!
+  exchangeRate: BigDecimal! # totalAssets / totalSupply
+}

@@ -2,7 +2,7 @@ specVersion: 1.3.0
 indexerHints:
   prune: auto
 schema:
-  file: ./schema.graphql
+  file: ./generated/schema.graphql
 dataSources:
   - kind: ethereum
     name: sVSN
@@ -71,4 +71,4 @@ dataSources:
           handler: handleWithdraw
         - event: WithdrawSurplus(address,uint256)
           handler: handleWithdrawSurplus
-      file: ./src/s-vsn.ts
+      file: ./src/index.ts
