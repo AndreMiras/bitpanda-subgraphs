@@ -1,0 +1,74 @@
+specVersion: 1.3.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: sVSN
+    network: mainnet
+    source:
+      address: "0xCc248D5ab5f7EA5c1d2302c285660caef2cEe376"
+      abi: sVSN
+      startBlock: 22816304
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - AssetsClaimed
+        - BpsYieldCapPerSecondUpdated
+        - CooldownDurationUpdated
+        - CooldownStarted
+        - Deposit
+        - DistributeRewards
+        - MaximumRewardsCycleDurationUpdated
+        - Paused
+        - RewardsCycleCreated
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - Transfer
+        - Unpaused
+        - Withdraw
+        - WithdrawSurplus
+      abis:
+        - name: sVSN
+          file: ./abis/sVSN.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: AssetsClaimed(address,address,uint256)
+          handler: handleAssetsClaimed
+        - event: BpsYieldCapPerSecondUpdated(uint256,uint256)
+          handler: handleBpsYieldCapPerSecondUpdated
+        - event: CooldownDurationUpdated(uint256,uint256)
+          handler: handleCooldownDurationUpdated
+        - event: CooldownStarted(address,uint256,uint256,uint104)
+          handler: handleCooldownStarted
+        - event: Deposit(indexed address,indexed address,uint256,uint256)
+          handler: handleDeposit
+        - event: DistributeRewards(uint256)
+          handler: handleDistributeRewards
+        - event: MaximumRewardsCycleDurationUpdated(uint256,uint256)
+          handler: handleMaximumRewardsCycleDurationUpdated
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RewardsCycleCreated(uint256,uint256,uint256)
+          handler: handleRewardsCycleCreated
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Withdraw(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleWithdraw
+        - event: WithdrawSurplus(address,uint256)
+          handler: handleWithdrawSurplus
+      file: ./src/s-vsn.ts
