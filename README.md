@@ -4,7 +4,8 @@ Unofficial Bitpanda.com Subgraphs
 
 ## Subgraph URLs
 
-- https://thegraph.com/explorer/subgraphs/AFHGugzAJbgBSRvNnjEx4c1Wya5M4oMAWa5RsNnjQCrs
+- [Vision VSN](https://thegraph.com/explorer/subgraphs/9m6ouChjPuv6ShsK9Q3rRkj5tWThz2P3LjKr3JihuR6n)
+- [Vision sVSN](https://thegraph.com/explorer/subgraphs/AFHGugzAJbgBSRvNnjEx4c1Wya5M4oMAWa5RsNnjQCrs)
 
 ## Install
 
@@ -23,6 +24,14 @@ npm run build:graph
 ```
 
 ## Deploy
+
+VSN:
+
+```sh
+cd vsn && npx graph deploy vision-vsn
+```
+
+sVSN:
 
 ```sh
 cd svsn && npx graph deploy vision-svsn

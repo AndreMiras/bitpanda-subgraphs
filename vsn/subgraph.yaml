@@ -1,0 +1,59 @@
+specVersion: 1.3.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: VSN
+    network: mainnet
+    source:
+      address: "0xda528Dd3e7F2cd16E5F4175902c64F5993bC297c"
+      abi: VSN
+      startBlock: 22688805
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Burn
+        - EIP712DomainChanged
+        - Initialized
+        - Mint
+        - Paused
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - Transfer
+        - Unpaused
+        - Upgraded
+      abis:
+        - name: VSN
+          file: ./abis/VSN.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Burn(indexed address,uint256)
+          handler: handleBurn
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: Mint(indexed address,indexed address,uint256)
+          handler: handleMint
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+      file: ./src/vsn.ts
