@@ -1,7 +1,11 @@
 {
  "scripts": {
+  "dependencies": "npm run dependencies:svsn",
+  "dependencies:svsn": "yarn --cwd svsn install --frozen-lockfile",
+  "build": "npm run build:schema && npm run build:graph",
   "build:schema": "tsx scripts/build-schema.ts",
-  "build:graph": "npm run build:schema && cd svsn && graph codegen && graph build",
+  "build:graph": "npm run build:graph:svsn",
+  "build:graph:svsn": "cd svsn && graph codegen && graph build",
   "test": "npm run test:svsn",
   "test:svsn": "cd svsn && graph test --docker"
  },

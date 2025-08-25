@@ -1,5 +1,7 @@
 # Bitpanda Subgraphs
 
+[![Tests](https://github.com/AndreMiras/bitpanda-subgraphs/actions/workflows/tests.yml/badge.svg)](https://github.com/AndreMiras/bitpanda-subgraphs/actions/workflows/tests.yml)
+
 Unofficial Bitpanda.com Subgraphs
 
 ## Subgraph URLs
@@ -19,8 +21,7 @@ We're using custom build commands to generate the `schema.graphql` and simplify
 the graph build.
 
 ```sh
-npm run build:schema
-npm run build:graph
+npm run build
 ```
 
 ## Deploy
