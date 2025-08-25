@@ -8,7 +8,7 @@ dataSources:
     name: VSN
     network: mainnet
     source:
-      address: "0xda528Dd3e7F2cd16E5F4175902c64F5993bC297c"
+      address: "0x699Ccf919C1dfdFa4C374292f42CAdC9899BF753"
       abi: VSN
       startBlock: 22688805
     mapping:
