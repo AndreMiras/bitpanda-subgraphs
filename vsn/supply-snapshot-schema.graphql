@@ -1,0 +1,26 @@
+type SupplySnapshot @entity(immutable: true) {
+  id: ID!
+  blockNumber: BigInt!
+  txHash: Bytes!
+  timestamp: BigInt!
+  eventType: String! # "mint", "burn"
+  totalSupply: BigInt! # Total supply after this event
+  amount: BigInt! # Amount minted/burned in this event
+  allTimeMinted: BigInt! # Cumulative minted up to this point
+  allTimeBurned: BigInt! # Cumulative burned up to this point
+  from: Bytes # address for burns
+  to: Bytes # address for mints
+  minter: Bytes # address that initiated mint
+  burner: Bytes # address that initiated burn
+}
+
+# Singleton entity to efficiently track cumulative totals
+type CumulativeSupplyStats @entity(immutable: false) {
+  id: ID! # Always "cumulative"
+  allTimeMinted: BigInt!
+  allTimeBurned: BigInt!
+  totalMintEvents: Int!
+  totalBurnEvents: Int!
+  lastUpdatedBlock: BigInt!
+  lastUpdatedTimestamp: BigInt!
+}
