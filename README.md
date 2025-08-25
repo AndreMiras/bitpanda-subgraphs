@@ -50,3 +50,9 @@ easier to regenerate them as needed e.g. on contract update. This is why we use
 ```sh
 npm test
 ```
+
+Or within Docker if the platform is not supported:
+
+```sh
+npm test:docker
+```
