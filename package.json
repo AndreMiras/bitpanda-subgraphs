@@ -1,7 +1,9 @@
 {
  "scripts": {
   "build:schema": "tsx scripts/build-schema.ts",
-  "build:graph": "npm run build:schema && cd svsn && graph codegen && graph build"
+  "build:graph": "npm run build:schema && cd svsn && graph codegen && graph build",
+  "test": "npm run test:svsn",
+  "test:svsn": "cd svsn && graph test --docker"
  },
  "devDependencies": {
   "@graphprotocol/graph-cli": "^0.97.1",

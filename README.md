@@ -43,3 +43,9 @@ Note that we try to keep most of the scaffolded files untouched. This make it
 easier to regenerate them as needed e.g. on contract update. This is why we use
 `svsn/src/index.ts` and `svsn/src/snapshot.ts` to extend `svsn/src/s-vsn.ts` and
 `svsn/snapshot-schema.graphql` to extend `svsn/schema.graphql`.
+
+## Tests
+
+```sh
+npm test
+```
