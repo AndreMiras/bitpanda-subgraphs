@@ -1,15 +1,19 @@
 {
  "scripts": {
-  "dependencies": "npm run dependencies:svsn",
+  "dependencies": "npm run dependencies:svsn && npm run dependencies:vsn",
   "dependencies:svsn": "yarn --cwd svsn install --frozen-lockfile",
+  "dependencies:vsn": "yarn --cwd vsn install --frozen-lockfile",
   "build": "npm run build:schema && npm run build:graph",
   "build:schema": "tsx scripts/build-schema.ts",
-  "build:graph": "npm run build:graph:svsn",
+  "build:graph": "npm run build:graph:svsn && npm run build:graph:vsn",
   "build:graph:svsn": "cd svsn && graph codegen && graph build",
+  "build:graph:vsn": "cd vsn && graph codegen && graph build",
   "test": "npm run test:svsn",
   "test:svsn": "cd svsn && graph test",
-  "test:docker": "npm run test:svsn:docker",
-  "test:svsn:docker": "npm run test:svsn -- --docker"
+  "test:vsn": "cd vsn && graph test",
+  "test:docker": "npm run test:svsn:docker && npm run test:vsn:docker",
+  "test:svsn:docker": "npm run test:svsn -- --docker",
+  "test:vsn:docker": "npm run test:vsn -- --docker"
  },
  "devDependencies": {
   "@graphprotocol/graph-cli": "^0.97.1",

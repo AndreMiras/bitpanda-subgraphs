@@ -15,6 +15,8 @@ import { createApprovalEvent } from "./vsn-utils"
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/subgraphs/developing/creating/unit-testing-framework/#tests-structure
 
+let newApprovalEvent: ApprovalEvent
+
 describe("Describe entity assertions", () => {
   beforeAll(() => {
     let owner = Address.fromString("0x0000000000000000000000000000000000000001")
@@ -22,7 +24,7 @@ describe("Describe entity assertions", () => {
       "0x0000000000000000000000000000000000000001"
     )
     let value = BigInt.fromI32(234)
-    let newApprovalEvent = createApprovalEvent(owner, spender, value)
+    newApprovalEvent = createApprovalEvent(owner, spender, value)
     handleApproval(newApprovalEvent)
   })
 
@@ -35,23 +37,23 @@ describe("Describe entity assertions", () => {
 
   test("Approval created and stored", () => {
     assert.entityCount("Approval", 1)
+    const id = newApprovalEvent.transaction.hash.concatI32(newApprovalEvent.logIndex.toI32()).toHexString()
 
-    // 0xa16081f360e3847006db660bae1c6d1b2e17ec2a is the default address used in newMockEvent() function
     assert.fieldEquals(
       "Approval",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      id,
       "owner",
       "0x0000000000000000000000000000000000000001"
     )
     assert.fieldEquals(
       "Approval",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      id,
       "spender",
       "0x0000000000000000000000000000000000000001"
     )
     assert.fieldEquals(
       "Approval",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      id,
       "value",
       "234"
     )
